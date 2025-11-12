@@ -15,7 +15,8 @@ else:
 rtc.memory(b'woke')
 
 # Configure pin 4 as input with pull-up for external wake
-wake_pin = Pin(4, mode=Pin.IN, pull=Pin.PULL_UP)
+# hold=True is a must for S2 and S3
+wake_pin = Pin(4, mode=Pin.IN, pull=Pin.PULL_UP, hold=True)
 esp32.wake_on_ext0(pin=wake_pin, level=esp32.WAKEUP_ALL_LOW)
 
 print("Going to deep sleep. Press button on GPIO4 to wake.")
